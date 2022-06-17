@@ -1,6 +1,7 @@
 # myui
 
 > my ui
+> use Vue
 
 ## Build Setup
 
