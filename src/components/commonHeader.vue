@@ -10,5 +10,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.logoImg{
+    font-size: 20px;
+}
 </style>

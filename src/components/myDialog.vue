@@ -44,7 +44,7 @@ export default {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid #ddd;

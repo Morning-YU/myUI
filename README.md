@@ -1,5 +1,4 @@
 # myui
-> my ui
 > use Vue
 ## UI
 dialog 

@@ -8,7 +8,7 @@
           @open="handleOpen"
           @close="handleClose"
         >
-          <el-submenu index="1">
+          <!-- <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-location"></i>
               <span>导航一</span>
@@ -25,10 +25,12 @@
               <template slot="title">选项4</template>
               <el-menu-item index="1-4-1">选项1</el-menu-item>
             </el-submenu>
-          </el-submenu>
+          </el-submenu> -->
           <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
+            <router-link to="/selectView">
+              <i class="el-icon-menu"></i>
+              选择器
+            </router-link>
           </el-menu-item>
           <el-menu-item index="3">
             <router-link to="/dialogView">
@@ -50,13 +52,9 @@
 
 <script>
 export default {
-  methods:{
-    handleOpen(){
-
-    },
-    handleClose(){
-      
-    }
-  }
-}
+  methods: {
+    handleOpen() {},
+    handleClose() {},
+  },
+};
 </script>
