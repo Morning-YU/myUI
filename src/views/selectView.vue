@@ -1,10 +1,12 @@
 <template>
   <div class="block">
-    <my-selector class="select"
+    <my-selector
+      class="selector"
       :selectData="selectData"
-      :selValue="selValue"
+      :initValue="initValue"
       @getValue="getValue"
-    ></my-selector>
+    >
+    </my-selector>
   </div>
 </template>
 
@@ -35,27 +37,25 @@ export default {
           value: 14,
         },
       ],
-      selValue: "",
+      initValue: "",
     };
   },
   created() {
-    // 初始化下拉框
-    this.selValue = this.selectData[0].value;
+    this.initValue = this.selectData[0].value;
   },
   methods: {
     getValue(name, value, index) {
-      console.log("item:", name, value, index);
+      console.log("select city:", name);
     },
   },
 };
 </script>
-
 <style lang="" scoped>
 .block {
   position: relative;
-  height: 100px;
+  top: 20px;
 }
-.select{
+.selector {
   position: absolute;
   top: 50%;
   left: 50%;

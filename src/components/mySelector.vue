@@ -1,56 +1,55 @@
 <template>
-  <div class="m-select-wrap">
-    <input
-      :class="['u-select-input']"
-      type="text"
-      readonly
-      @click="openSelect"
-      @blur="onBlur"
-      v-model="selectName"
-    />
-    <div
-      :class="['triangle-down', { rotate: rotate }]"
-      @click="openSelect"
-    ></div>
-    <div
-      :class="['m-options-panel', showOptions ? 'show' : 'hidden']"
-      :style="`height: ${selectData.length * 60}px;`"
-    >
-      <p
-        class="u-option"
-        @mousedown="getValue(item.name, item.value, index)"
-        v-for="(item, index) in selectData"
-        :key="index"
+  <div class="block">
+    <div class="selectorWrapper">
+      <input
+        class="selectInput"
+        type="text"
+        readonly
+        @click="showOptions"
+        @blur="hiddenOptions"
+        v-model="selectName"
+      />
+      <div :class="['triangle', { rotate: isRotate }]"></div>
+      <div
+        :class="['optionsPanel', isShow ? 'show' : 'hidden']"
+        :style="`height: ${selectData.length * 60}px;`"
       >
-        {{ item.name }}
-      </p>
+        <p
+          class="option"
+          @mousedown="getValue(item.name, item.value, index)"
+          v-for="(item, index) in selectData"
+          :key="index"
+        >
+          {{ item.name }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "mySelector",
+  // 接收父组件传入的初始值和选择列表
   props: {
     selectData: {
       type: Array,
-      default: () => {
-        return [];
-      },
+      default: [],
     },
-    selValue: {
-      // 将该prop值作为selV的初始值
-      type: [Number, String],
+    initValue: {
+      type: [String, Number],
       default: null,
     },
   },
   data() {
     return {
-      selectValue: this.selValue,
-      rotate: false,
-      showOptions: false,
+      selectValue: this.initValue,
+      isShow: false,
+      isRotate: false,
     };
   },
   computed: {
+    // 计算属性，v-model双向绑定，修改页面展示数据
     selectName() {
       for (const item of this.selectData) {
         if (item.value === this.selectValue) {
@@ -61,15 +60,15 @@ export default {
     },
   },
   methods: {
-    openSelect() {
-      this.showOptions = !this.showOptions;
-      this.rotate = !this.rotate;
+    showOptions() {
+      this.isShow = !this.isShow;
+      this.isRotate = !this.isRotate;
     },
-    onBlur() {
-      this.showOptions = false;
-      this.rotate = false;
+    hiddenOptions() {
+      this.isShow = false;
+      this.isRotate = false;
     },
-
+    // 选中新数据，selectName改变，触发父组件定义的事件
     getValue(name, value, index) {
       this.selectValue = value;
       this.$emit("getValue", name, value, index);
@@ -77,27 +76,26 @@ export default {
   },
 };
 </script>
-<style scoped>
-.m-select-wrap {
+
+<style lang="" scoped>
+.selectorWrapper {
   position: relative;
   width: 133px;
   height: 40px;
   line-height: 40px;
 }
-.u-select-input {
+.selectInput {
   width: 105px;
-  background: #ffffff;
+  height: 38px;
+  line-height: 38px;
+  background: white;
   color: black;
   border-radius: 20px;
   border: 1px solid #3a79ee;
-  height: 38px;
-  line-height: 38px;
   padding: 0 15px;
   cursor: pointer;
-  /* border: none; */
 }
-/* 右侧三角样式 */
-.triangle-down {
+.triangle {
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
@@ -111,29 +109,28 @@ export default {
 .rotate {
   transform: rotate(180deg);
 }
-.m-options-panel {
+.show {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+.optionsPanel {
   position: absolute;
-  background: #ffffff;
+  background: white;
   border-radius: 8px;
   width: 135px;
   border: 1px solid #e3e3e3;
   top: 46px;
   left: 0;
 }
-.u-option {
+.option {
   cursor: pointer;
   border-top: 1px solid #eef1fa;
   border-bottom: 1px solid #eef1fa;
-  
 }
-.u-option:hover {
+.option:hover {
   color: #3a79ee;
   background: #eef1fa;
-}
-.show {
-  display: block;
-}
-.hidden {
-  display: none;
 }
 </style>

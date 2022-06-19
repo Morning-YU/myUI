@@ -1,6 +1,7 @@
 <template>
   <div class="block">
-    <my-swiper class="swiperBlock" :imgList="imgList" :initialInterval = 3000> </my-swiper>
+    <my-swiper class="swiperBlock" :imgList="imgList" :initialInterval="3000">
+    </my-swiper>
   </div>
 </template>
 
@@ -28,9 +29,4 @@ export default {
 </script>
 
 <style scoped>
-/* .block{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 </style>
