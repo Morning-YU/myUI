@@ -5,6 +5,7 @@ const CommonLayout = () => import('../components/layout')
 const swiperView = () => import('../views/swiperView')
 const dialogView = () => import('../views/dialogView')
 const selectView = () => import('../views/selectView')
+const datepickerView = () => import('../views/datepickerView')
 Vue.use(Router)
 
 export default new Router({
@@ -28,7 +29,12 @@ export default new Router({
           path: '/selectView',
           name: 'selectView',
           component: selectView
+        },{
+          path: '/datepickerView',
+          name: 'datepickerView',
+          component: datepickerView
         }
+
       ]
     }
   ]

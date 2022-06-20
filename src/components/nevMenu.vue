@@ -26,21 +26,27 @@
               <el-menu-item index="1-4-1">选项1</el-menu-item>
             </el-submenu>
           </el-submenu> -->
-          <el-menu-item index="2">
+          <el-menu-item index="1">
             <router-link to="/selectView">
-              <i class="el-icon-menu"></i>
+              <i class="el-icon-setting"></i>
               选择器
             </router-link>
           </el-menu-item>
+          <el-menu-item index="2">
+            <router-link to="/datepickerView">
+              <i class="el-icon-date"></i>
+              时间选择器
+            </router-link>
+          </el-menu-item> 
           <el-menu-item index="3">
             <router-link to="/dialogView">
-              <i class="el-icon-document"></i>
+              <i class="el-icon-postcard"></i>
               弹窗
             </router-link>
           </el-menu-item>
           <el-menu-item index="4">
             <router-link to="/swiperView">
-              <i class="el-icon-setting"></i>
+              <i class="el-icon-picture-outline"></i>
               轮播图
             </router-link>
           </el-menu-item>

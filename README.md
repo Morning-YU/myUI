@@ -1,8 +1,10 @@
 # myui
 > use Vue
 ## UI
-dialog 
-swiper
+dialog 弹窗 
+swiper 轮播图
+selector 选择器
+datePicker 时间选择器
 
 ## Build Setup
 
