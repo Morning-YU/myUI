@@ -52,13 +52,8 @@ export default {
 </script>
 <style lang="" scoped>
 .block {
-  position: relative;
-  top: 20px;
-}
-.selector {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

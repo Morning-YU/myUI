@@ -1,9 +1,6 @@
 <template>
   <div class="block">
-    <my-date-picker
-      :date="date"
-
-    ></my-date-picker>
+    <my-date-picker class="datePicker" @input="input"></my-date-picker>
   </div>
 </template>
 <script>
@@ -13,11 +10,19 @@ export default {
     myDatePicker,
   },
   data() {
-    return {
-      date: new Date().format("yyyy-MM-dd"),
-    };
+    return {};
+  },
+  methods: {
+    input(day) {
+      console.log(day);
+    },
   },
 };
 </script>
 <style lang="" scoped>
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
