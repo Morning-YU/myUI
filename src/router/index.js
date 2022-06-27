@@ -7,6 +7,7 @@ const dialogView = () => import('../views/dialogView')
 const selectView = () => import('../views/selectView')
 const datepickerView = () => import('../views/datepickerView')
 const testView = () => import('../views/testView')
+const backtoTopView = () => import('../views/backtoTopView')
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
           path: '/testView',
           name: 'testView',
           component: testView
+        },
+        {
+          path: '/backtoTopView',
+          name: 'backtoTopView',
+          component: backtoTopView
         }
 
       ]
