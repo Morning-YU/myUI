@@ -5,15 +5,15 @@
     </header>
     <section>
       <el-row>
-        <el-col :xs="0" :sm="7" :md="6" :lg="5" :xl="5">
+        <el-col>
           <div>
             <aside class="navMenu">
               <nav-menu></nav-menu>
             </aside>
           </div>
         </el-col>
-        <el-col :xs="24" :sm="17" :md="12" :lg="14" :xl="14">
-          <div>
+        <el-col>
+          <div class="box">
             <router-view></router-view>
           </div>
         </el-col>
@@ -35,6 +35,9 @@ export default {
 </script>
 
 <style lang="" scoped>
+.myLayout {
+  position: relative;
+}
 header {
   position: fixed;
   top: 10px;
@@ -43,11 +46,12 @@ header {
   z-index: 9999;
 }
 .navMenu {
-  /* position: relative;
-  right: 0;
-  left: 0;
-  z-index: 9999; */
-  /* display: inline-block; */
-  width: 300px;
+  position: fixed;
+  width: 200px;
 }
+/* .box {
+  position: absolute;
+  left: 200px;
+  width: calc(100% - 200px);
+} */
 </style>

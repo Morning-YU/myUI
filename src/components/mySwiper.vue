@@ -179,6 +179,9 @@ export default {
   margin: 0;
   padding: 0;
 }
+ul {
+  list-style: none;
+}
 .swiperWrapper {
   position: relative;
   width: 600px;
