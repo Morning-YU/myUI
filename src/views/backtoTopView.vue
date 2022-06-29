@@ -1,7 +1,7 @@
 <template>
   <div class="block">
     <my-backto-top> </my-backto-top>
-    <div v-for="s in 100" class="background-color" :key="s">{{ s }}</div>
+    <div class="content" v-for="val in 100" :key="val">{{ val }}</div>
   </div>
 </template>
 <script>
@@ -12,3 +12,9 @@ export default {
   },
 };
 </script>
+
+<style lang="" scoped>
+.content {
+  height: 50px;
+}
+</style>

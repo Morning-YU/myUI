@@ -1,12 +1,9 @@
 <template>
   <div class="block">
     <div class="backtoTop">
-      <i
-        class="el-icon-upload2"
-        name="back-top"
-        @click="backTop"
-        v-if="showBtn"
-      ></i>
+      <div class="backTop" name="back-top" @click="backTop" v-if="showBtn">
+        <i class="el-icon-upload2"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -14,16 +11,33 @@
 export default {
   data() {
     return {
-      showBtn: false, // 回到顶部，默认是false，就是隐藏起来
+      showBtn: false,
     };
   },
 
-  created() {},
   mounted() {
-    window.addEventListener("scroll", this.showbtn, true);
+    // 绑定事件 (事件，方法，是否冒泡)
+    window.addEventListener("scroll", this.myThrottle(), true);
   },
+
   methods: {
-    // 回到顶部
+    // 节流，一定时间内重复触发只运行一次
+    throttle(fn, delay = 1000) {
+      let timer = null;
+      return function () {
+        let context = this;
+        let args = arguments;
+        // timer为null，则新执行一个定时器，执行完定时器设置为null；否则不操作
+        if (!timer) {
+          timer = setTimeout(() => {
+            fn.apply(context, args);
+            timer = null;
+          }, delay);
+        }
+      };
+    },
+
+    // 监听滚动的距离，滚动距离大于900显示回到顶部按钮
     showbtn() {
       let that = this;
       let scrollTop =
@@ -31,6 +45,7 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       that.scrollTop = scrollTop;
+      // console.log(that.scrollTop);
       if (scrollTop > 900) {
         this.showBtn = true;
       } else {
@@ -38,21 +53,26 @@ export default {
       }
     },
 
-    /*回到顶部实现过程注解：
-        1.获取当前页面距离顶部的距离
-        2.计算出每次向上移动的距离，用负的滚动距离除以5，因为滚动的距离是一个正数，想向上移动就是一个减法
-        3.用当前距离加上计算出的距离，然后赋值给当前距离，就可以达到向上移动的效果
-        4.最后在移动到顶部的时候，清除定时器
-        */
+    myThrottle() {
+      return this.throttle(this.showbtn);
+    },
 
     backTop() {
       var timer = setInterval(function () {
+        // 获取距离顶部的距离
         let osTop =
           document.documentElement.scrollTop || document.body.scrollTop;
-        let ispeed = Math.floor(-osTop / 5);
+
+        // 瞬移
+        // document.documentElement.scrollTop = document.body.scrollTop = 0;
+        // this.isTop = true;
+
+        // 缓慢移动，通过定时调用来控制
+        let ispeed = Math.floor(-osTop / 10);
         document.documentElement.scrollTop = document.body.scrollTop =
           osTop + ispeed;
-        this.isTop = true;
+
+        // 到顶部后清除定时器
         if (osTop === 0) {
           clearInterval(timer);
         }
@@ -62,26 +82,19 @@ export default {
 };
 </script>
 
-<style>
-.el-icon-upload2 {
+<style scoped>
+.backTop {
   height: 35px;
-  width: 37px;
+  width: 35px;
   position: fixed;
-  right: 4%;
-  bottom: 11%;
+  right: 3%;
+  bottom: 5%;
   text-align: center;
   line-height: 35px;
-  font-size: 25px;
+  font-size: 35px;
   background-color: #fff;
-  /* border-radius: 50%; */
-  /* box-shadow: 0px 1px 3px 1px #888888; */
   z-index: 999;
-}
-
-.background-color {
-  width: 100%;
-  height: 80px;
-  /* background-color: pink; */
+  cursor: pointer;
 }
 </style>
 
