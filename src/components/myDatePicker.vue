@@ -345,6 +345,7 @@ input {
 .dateList .preMonth,
 .dateList .nextMonth {
   color: #c5c8ce;
+  border: 1px solid white;
   background: transparent;
 }
 </style>

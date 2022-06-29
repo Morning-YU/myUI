@@ -7,21 +7,21 @@
         readonly
         @click="showOptions"
         @blur="hiddenOptions"
-        v-model="selectName"
+        v-model="selectedName"
       />
       <div :class="['triangle', { rotate: isRotate }]"></div>
       <div
         :class="['optionsPanel', isShow ? 'show' : 'hidden']"
-        :style="`height: ${selectData.length * 60}px;`"
+        :style="`height: ${selectData.length * 40}px;`"
       >
-        <p
+        <div
           class="option"
           @mousedown="getValue(item.name, item.value, index)"
           v-for="(item, index) in selectData"
           :key="index"
         >
           {{ item.name }}
-        </p>
+        </div>
       </div>
     </div>
   </div>
@@ -36,23 +36,24 @@ export default {
       type: Array,
       default: [],
     },
-    initValue: {
+    initName: {
       type: [String, Number],
       default: null,
     },
   },
   data() {
     return {
-      selectValue: this.initValue,
+      // selectValue: this.initValue,
+      selectedName: this.initName,
       isShow: false,
       isRotate: false,
     };
   },
-  computed: {
+  watch: {
     // 计算属性，v-model双向绑定，修改页面展示数据
-    selectName() {
+    selectedName() {
       for (const item of this.selectData) {
-        if (item.value === this.selectValue) {
+        if (item.name === this.selectedName) {
           return item.name;
         }
       }
@@ -68,9 +69,10 @@ export default {
       this.isShow = false;
       this.isRotate = false;
     },
-    // 选中新数据，selectName改变，触发父组件定义的事件
+    // 选中新数据，selectedName改变，触发父组件定义的事件
     getValue(name, value, index) {
-      this.selectValue = value;
+      // this.selectValue = value;
+      this.selectedName = name;
       this.$emit("getValue", name, value, index);
     },
   },
@@ -127,7 +129,6 @@ export default {
 .option {
   cursor: pointer;
   border-top: 1px solid #eef1fa;
-  border-bottom: 1px solid #eef1fa;
 }
 .option:hover {
   color: #3a79ee;

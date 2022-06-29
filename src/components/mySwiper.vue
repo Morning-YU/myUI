@@ -98,10 +98,6 @@ export default {
 
   methods: {
     play() {
-      if (this.timer) {
-        window.clearInterval(this.timer);
-        this.timer = null;
-      }
       this.timer = window.setInterval(() => {
         this.move(600, -1, this.speed);
       }, this.initialInterval);
@@ -113,14 +109,6 @@ export default {
     },
     init() {
       this.play();
-      // 鼠标移入：停止轮播
-      window.onblur = function () {
-        this.stop();
-      }.bind(this);
-      // 鼠标移出：继续轮播
-      window.onfocus = function () {
-        this.play();
-      }.bind(this);
     },
     move(offset, direction, speed) {
       if (!this.transitionEnd) return;
@@ -128,8 +116,10 @@ export default {
       direction === -1
         ? (this.currentIndex += offset / this.imgWidth)
         : (this.currentIndex -= offset / this.imgWidth);
+      // 临界情况
       if (this.currentIndex > this.imgList.length) this.currentIndex = 1;
       if (this.currentIndex < 1) this.currentIndex = this.imgList.length;
+
       const destination = this.distance + offset * direction;
       this.animate(destination, direction, speed);
     },
@@ -157,8 +147,11 @@ export default {
     },
 
     jump(index) {
+      // 确定移动方向
       const direction = index - this.currentIndex >= 0 ? -1 : 1;
+      // 确定移动距离
       const offset = Math.abs(index - this.currentIndex) * this.imgWidth;
+
       const jumpSpeed =
         Math.abs(index - this.currentIndex) === 0
           ? this.speed

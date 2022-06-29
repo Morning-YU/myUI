@@ -3,7 +3,7 @@
     <my-selector
       class="selector"
       :selectData="selectData"
-      :initValue="initValue"
+      :initName="initName"
       @getValue="getValue"
     >
     </my-selector>
@@ -41,7 +41,7 @@ export default {
     };
   },
   created() {
-    this.initValue = this.selectData[0].value;
+    this.initName = this.selectData[0].name;
   },
   methods: {
     getValue(name, value, index) {
