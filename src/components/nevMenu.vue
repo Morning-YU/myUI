@@ -2,7 +2,7 @@
   <div class="block">
     <el-menu
       class="el-menu-vertical-demo"
-      mode = "vertical"
+      mode="vertical"
       @open="handleOpen"
       @close="handleClose"
     >
@@ -40,6 +40,12 @@
         <router-link to="/backtoTopView">
           <i class="el-icon-upload2"></i>
           回到顶部
+        </router-link>
+      </el-menu-item>
+      <el-menu-item index="5">
+        <router-link to="/processView">
+          <i class="el-icon-s-data"></i>
+          进度条
         </router-link>
       </el-menu-item>
     </el-menu>

@@ -49,9 +49,9 @@ header {
   position: fixed;
   width: 200px;
 }
-/* .box {
+.box {
   position: absolute;
   left: 200px;
   width: calc(100% - 200px);
-} */
+}
 </style>
