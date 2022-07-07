@@ -93,7 +93,7 @@ export default {
   background: white;
   color: black;
   border-radius: 20px;
-  border: 1px solid #3a79ee;
+  border: 1px solid #409eff;
   padding: 0 15px;
   cursor: pointer;
 }
@@ -102,7 +102,7 @@ export default {
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 10px solid #3a79ee;
+  border-top: 10px solid #409eff;
   position: absolute;
   top: 17px;
   right: 12px;
@@ -131,7 +131,7 @@ export default {
   border-top: 1px solid #eef1fa;
 }
 .option:hover {
-  color: #3a79ee;
+  color: #409eff;
   background: #eef1fa;
 }
 </style>

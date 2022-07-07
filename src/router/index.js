@@ -9,6 +9,8 @@ const datepickerView = () => import('../views/datepickerView')
 const testView = () => import('../views/testView')
 const backtoTopView = () => import('../views/backtoTopView')
 const processView = () => import('../views/processView.vue')
+const starView = () => import('../views/starView.vue')
+
 Vue.use(Router)
 
 export default new Router({
@@ -52,6 +54,11 @@ export default new Router({
           path: '/processView',
           name: 'processView',
           component: processView
+        },
+        {
+          path: '/starView',
+          name: starView,
+          component: starView
         }
 
       ]

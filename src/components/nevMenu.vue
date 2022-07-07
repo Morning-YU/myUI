@@ -30,22 +30,28 @@
           弹窗
         </router-link>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="5">
         <router-link to="/swiperView">
           <i class="el-icon-picture-outline"></i>
           轮播图
         </router-link>
       </el-menu-item>
-      <el-menu-item index="4">
+      <el-menu-item index="6">
         <router-link to="/backtoTopView">
           <i class="el-icon-upload2"></i>
           回到顶部
         </router-link>
       </el-menu-item>
-      <el-menu-item index="5">
+      <el-menu-item index="7">
         <router-link to="/processView">
           <i class="el-icon-s-data"></i>
           进度条
+        </router-link>
+      </el-menu-item>
+      <el-menu-item index="8">
+        <router-link to="/starView">
+          <i class="el-icon-star-off"></i>
+          评分
         </router-link>
       </el-menu-item>
     </el-menu>

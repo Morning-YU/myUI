@@ -93,6 +93,7 @@ export default {
   line-height: 35px;
   font-size: 35px;
   background-color: #fff;
+  color: #409eff;
   z-index: 999;
   cursor: pointer;
 }
