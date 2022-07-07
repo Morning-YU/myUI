@@ -123,6 +123,12 @@ methods: {
 
 1. 进度在0-100之间，注意临界的判断
 
+### 7. star评分
+
+**核心：**
+
+根据选中的星星的index，生成class数组，然后绑定对应的 class
+
 ## Build Setup
 
 ``` bash
